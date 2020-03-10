@@ -1,0 +1,97 @@
+p {
+  font-family: Lato;
+}
+
+  table { 
+    border-collapse: collapse; 
+    border: 5px solid blue;
+    font-family: sans-serif;  
+} 
+
+th{
+  width: 30%;
+
+}
+
+thead tr th{
+    border-bottom: 1px solid #7a7a52; 
+}
+
+tr td{
+  border-bottom: 1px solid #aaaaa6;
+  padding-top: 2%;
+  padding-bottom: 2%; 
+  
+}
+
+
+td{
+  width: 30%;
+}
+
+th:nth-child(odd) {
+  text-align: left;
+  background: lightgray;
+  padding-left: 3%;
+  vertical-align: bottom;
+  font-weight: 100;
+
+}
+
+th:nth-child(even) {
+text-align: right;
+background: rgb(185, 180, 180);
+padding-right: 3%;
+vertical-align: bottom;
+font-weight: 100;
+}
+
+td:nth-child(odd) {
+  text-align: left;
+  padding-left: 3%;
+  vertical-align: middle;    
+}
+
+td:nth-child(even) {
+text-align: right;
+padding-right: 3%;
+vertical-align: middle;
+}
+
+.sub_header{
+  color: gray;
+  font-weight: 100;
+}
+
+.header_symbol{
+  color: blue;
+}
+
+.txt_account{
+  font-size: 22px;
+  color: blue;
+  font-weight: bolder;
+}
+
+.txt_balence{
+  color: black;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.txt_percentages{
+color: red;
+font-size: 70%
+}
+.per_positive{
+  color: green !important;
+}
+
+.txt_load_more{
+  color:blue;
+  font-size: 22px;
+  text-align: center !important;
+  vertical-align: middle;
+  padding-top: 4% !important;
+  padding-bottom: 4% !important; 
+  }
