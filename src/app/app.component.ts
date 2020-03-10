@@ -35,27 +35,61 @@ export class AppComponent  {
   };
 
   constructor(){
-    this.getAccountNumbers(undefined,"balence");
+
+    console.log("a. filtered by Bob =>");
+    console.log(this.getAccountNumbers("Bob"));
+
+    console.log("b. filtered by Charlie =>");
+    console.log(this.getAccountNumbers("Charlie"));
+
+    console.log("c. sorted by acctNum =>");
+    console.log(this.getAccountNumbers("","acctNum"));
+
+    console.log("d. filtered by Alice; sorted by balance ascending");
+    console.log(this.getAccountNumbers("Alice","balence","asc"));
 
   }
 
   getAccountNumbers(user?: string, sortBy?: string, sortDirection? : string ){
-   const ordered = {};
+
+   let sortedArray=[];
+
+   if(user){
+     let filteredData = {};
+     for(let i=0; i < this.acctData.length; i++){
+       if(user == this.acctData[i].user){
+        filteredData[this.acctData[i].acctNum] = this.balence[this.acctData[i].acctNum];
+       }
+     }
+     return this.sortByBalence(filteredData, sortDirection);
+     
+   }
 
   if(sortBy == "acctNum"){
-    Object.keys(this.balence).sort().forEach((key) => {
-    ordered[key] = this.balence[key];
-    });
+   sortedArray = Object.keys(this.balence).sort();
+   if(sortDirection == "asc"){
+     return sortedArray;
+   }
+   if(sortDirection == "desc"){
+     return sortedArray.reverse();
+   }
+   return sortedArray;  
   }
+
   if(sortBy == "balence"){
-     const values = Object.keys(this.balence).map(key => this.balence[key]);
-     values.sort().forEach((key)=>{
-       ordered[key] = this.balence[key];
-     })
-
+  if(sortDirection == "asc")
+     return this.sortByBalence(this.balence);
+  else if(sortDirection == "desc")
+     return this.sortByBalence(this.balence, "desc");
+  else
+     return  this.sortByBalence(this.balence);
+  }
   }
 
-console.log(JSON.stringify(ordered));
+  sortByBalence(data, sortDirection? : string){
+       if(sortDirection == "desc")
+        return Object.keys(data).sort((a,b)=> {return data[b]-data[a]});
+        return Object.keys(data).sort((a,b)=> {return data[a]-data[b]});
   }
 
 }
